@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import "components/DayListItem.scss"
 
+//props: name:String spots:Number selected:Boolean setDay:Function
 export default function DayListItem(props) {
 
   const dayClass = classNames("day-list__item", {
