@@ -20,6 +20,8 @@ export default function useVisualMode(initial) {
       setHistory(prev => [...prev.slice(0, -1)]);
     }
   };
+
+  console.log("HISTORY", history)
   
   return { mode, transition, back };
 }

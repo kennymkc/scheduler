@@ -41,7 +41,6 @@ export default function Application(props) {
           appointments
         })
     )
-      .catch(error => console.log(error));
   };
 
   function cancelInterview(id) {
@@ -62,7 +61,7 @@ export default function Application(props) {
           appointments
         })
       )
-  }
+  };
 
   const schedule = appointmentsForDay.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
