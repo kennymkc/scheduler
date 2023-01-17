@@ -13,7 +13,6 @@ export default function useApplicationData() {
   const setDay = day => setState({ ...state, day });
 
   function bookInterview(id, interview) {
-    console.log(id, interview);
 
     const appointment = {
       ...state.appointments[id],
@@ -46,7 +45,7 @@ export default function useApplicationData() {
     };
 
     return axios.delete(`/api/appointments/${id}`)
-      .then(
+      .then(() => 
         setState({
           ...state,
           appointments
