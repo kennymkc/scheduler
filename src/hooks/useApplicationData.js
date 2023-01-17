@@ -12,6 +12,31 @@ export default function useApplicationData() {
 
   const setDay = day => setState({ ...state, day });
 
+  //count number of nulls
+  const countFreeSpots = (state) => {
+    const currentDay = state.days.find(day => day.name === state.day);
+    const appointmentIds = currentDay.appointments;
+
+    const freeSpots = appointmentIds.filter(id => state.appointments[id].interview === null).length;
+
+    return freeSpots;
+  };
+
+  //update the state of day with available spots
+  const updatedSpots = (state) => {
+    const currentDay = state.days.find(day => day.name === state.day);
+    const currentDayIndex = state.days.findIndex(day => day.name === state.day);
+    const updatedDay = { ...currentDay };
+    updatedDay.spots = countFreeSpots(state);
+
+    const updatedDays = [...state.days];
+    updatedDays[currentDayIndex] = updatedDay;
+
+    const updatedState = { ...state, days: updatedDays };
+    
+    return updatedState;
+  }
+
   function bookInterview(id, interview) {
 
     const appointment = {
@@ -24,13 +49,17 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    const updatedState1 = { ...state, appointments };
+
     return axios.put(`/api/appointments/${id}`, { interview })
-      .then(
+      .then(() => {
+        const updatedState2 = updatedSpots(updatedState1);
         setState({
-          ...state,
-          appointments
+          ...updatedState2,
+          appointments,
+          days: [...updatedState2.days]
         })
-      )
+      })
   };
 
   function cancelInterview(id) {
@@ -44,13 +73,17 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    const updatedState1 = { ...state, appointments }
+
     return axios.delete(`/api/appointments/${id}`)
-      .then(() => 
+      .then(() => {
+        const updatedState2 = updatedSpots(updatedState1);
         setState({
-          ...state,
-          appointments
-        })
-      )
+          ...updatedState2,
+          appointments,
+          days: [...updatedState2.days]
+        });
+      })
   };
 
   useEffect(() => {
