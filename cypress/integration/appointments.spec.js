@@ -49,8 +49,3 @@ describe("Appointments", () => {
     cy.contains(".appointment__card--show", "Archie Cohen").should("not.exist");
   });
 });
-
-// Visits the root of our web server
-// Clicks the delete button for the existing appointment
-// Clicks the confirm button
-// Sees that the appointment slot is empty
