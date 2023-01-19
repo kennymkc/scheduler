@@ -12,32 +12,32 @@ Interview scheduler is a single-page app built on React that allows users to boo
 
 ## Setup
 
-Clone both of the following repos via these commands:
+<p>Clone both of the following repos via these commands:</p>
 
-git clone git@github.com:kennymkc/scheduler.git
-git clone git@github.com:git@github.com:kennymkc/scheduler-api.git
+<p>git clone git@github.com:kennymkc/scheduler.git</p>
+<p>git clone git@github.com:git@github.com:kennymkc/scheduler-api.git</p>
 
-Install dependencies with the command npm install for each of the repositories.
-
-___
-
-In the scheduler repo:
-
-npm start will start the WebPack development server
-npm test will start the Jest testing framework
-npm run storybook will launch Storybook
-npm run cypress will launch Cypress
+<p>Install dependencies with the command npm install for each of the repositories.</p>
 
 ___
 
-In the scheduler-api repo:
+In the scheduler repo:</p>
 
-npm start will start the api server
-npm run error will start the api server in error mode (used for testing errors).
+<p>npm start will start the WebPack development server</p>
+<p>npm test will start the Jest testing framework</p>
+<p>npm run storybook will launch Storybook</p>
+<p>npm run cypress will launch Cypress</p>
 
 ___
 
-Configuring the database:
+<p>In the scheduler-api repo:</p>
 
-Follow the instructions in the scheduler-api's README file
+<p>npm start will start the api server</p>
+<p>npm run error will start the api server in error mode (used for testing errors).</p>
+
+___
+
+<p>Configuring the database:</p>
+
+<p>Follow the instructions in the scheduler-api's README file</p>
 
